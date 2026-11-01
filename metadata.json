@@ -1,0 +1,6 @@
+{
+  "name": "OnVienChucBacNinh - Ôn Thi Viên Chức Bắc Ninh",
+  "description": "Nền tảng ôn thi viên chức giáo dục thông minh tại Bắc Ninh. Quản lý ngân hàng câu hỏi 10 chủ đề pháp luật, luyện thi trắc nghiệm, tự động ghi nhận câu sai và đánh giá mức độ thành thạo kiến thức.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

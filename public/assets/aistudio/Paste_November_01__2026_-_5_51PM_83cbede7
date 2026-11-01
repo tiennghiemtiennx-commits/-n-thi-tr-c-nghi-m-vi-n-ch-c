@@ -1,0 +1,1288 @@
+# MASTER PROMPT – XÂY DỰNG WEBSITE ONVIENCHUCBACNINH
+
+## 1. VAI TRÒ VÀ NHIỆM VỤ
+
+Bạn là một Senior Full-stack Developer, UI/UX Designer, Software Architect và chuyên gia thiết kế nền tảng E-learning.
+
+Nhiệm vụ của bạn là thiết kế và phát triển một website hoàn chỉnh có tên:
+
+**OnVienChucBacNinh**
+
+Tên hiển thị: Ôn Thi Viên Chức Bắc Ninh.
+
+Slogan: Ôn tập thông minh – Tự tin thi tuyển.
+
+Website phục vụ người có nhu cầu ôn tập kiến thức để tham gia kỳ thi tuyển dụng viên chức, trước mắt tập trung vào lĩnh vực giáo dục tại Bắc Ninh.
+
+Đây không phải website trắc nghiệm đơn giản chỉ có chức năng chọn đáp án và tính điểm. Đây là một nền tảng ôn luyện thông minh, có khả năng:
+
+- Quản lý ngân hàng câu hỏi theo từng chủ đề.
+- Tổ chức luyện tập theo chủ đề.
+- Tạo đề thi ngẫu nhiên.
+- Lưu lại câu trả lời của từng người dùng.
+- Tự động ghi nhận câu hỏi trả lời sai.
+- Cho phép người dùng ôn tập lại câu hỏi sai.
+- Theo dõi quá trình học tập.
+- Đánh giá mức độ thành thạo kiến thức của từng người dùng theo từng chủ đề.
+- Đưa ra gợi ý nội dung cần ôn tập tiếp theo.
+
+Nguyên tắc cốt lõi:
+
+**Admin quản lý nội dung một lần – Người dùng khai thác ngân hàng câu hỏi nhiều lần – Hệ thống liên tục ghi nhận, phân tích và đánh giá mức độ thành thạo kiến thức.**
+
+Hãy xây dựng sản phẩm có thể sử dụng thực tế, không chỉ tạo giao diện minh họa.
+
+---
+
+# 2. THÔNG TIN THƯƠNG HIỆU VÀ THIẾT KẾ
+
+## 2.1. Thương hiệu
+
+Tên: OnVienChucBacNinh
+
+Tên miền dự kiến: onvienchucbacninh.vn hoặc onvienchucbacninh.com.
+
+Không mặc định tên miền đã được đăng ký.
+
+## 2.2. Định hướng giao diện
+
+Thiết kế theo phong cách:
+
+- Hiện đại.
+- Chuyên nghiệp.
+- Đơn giản.
+- Dễ sử dụng.
+- Mang cảm giác tin cậy của một nền tảng giáo dục.
+- Phù hợp với giáo viên, người đi làm và người trưởng thành.
+
+Màu sắc chủ đạo:
+
+- Xanh navy: #123B70.
+- Xanh dương: #2563EB.
+- Trắng: #FFFFFF.
+- Xám nhạt: #F3F6FA.
+- Xanh lá: #16A36A, sử dụng cho trạng thái đúng và hoàn thành.
+- Đỏ: #DC2626, sử dụng cho trạng thái sai và cảnh báo.
+- Cam: #F59E0B, sử dụng cho cảnh báo và nội dung cần chú ý.
+
+Không sử dụng quá nhiều màu sắc sặc sỡ.
+
+## 2.3. Logo
+
+Tạo logo dạng biểu tượng kết hợp giữa:
+
+- Quyển sách.
+- Mũ tốt nghiệp hoặc biểu tượng tri thức.
+- Dấu tích hoàn thành.
+
+Logo cần đơn giản, dễ nhận diện, có thể sử dụng ở:
+
+- Header.
+- Trang đăng nhập.
+- Favicon.
+- Trang quản trị.
+- Các trang nội dung.
+
+Hiển thị tên OnVienChucBacNinh cạnh logo.
+
+## 2.4. Responsive
+
+Website phải hiển thị tốt trên:
+
+- Máy tính để bàn.
+- Laptop.
+- Máy tính bảng.
+- Điện thoại di động.
+
+Ưu tiên trải nghiệm trên máy tính nhưng không được bỏ qua giao diện điện thoại.
+
+Sử dụng tiếng Việt cho toàn bộ giao diện. Font chữ rõ ràng, dễ đọc.
+
+---
+
+# 3. CÔNG NGHỆ VÀ KIẾN TRÚC HỆ THỐNG
+
+Xây dựng ứng dụng bằng kiến trúc có thể mở rộng và triển khai thực tế.
+
+Công nghệ đề xuất:
+
+### Frontend
+
+- React.
+- TypeScript.
+- Tailwind CSS.
+- Lucide Icons.
+- React Router hoặc giải pháp routing phù hợp.
+
+### Backend và dữ liệu
+
+Sử dụng Firebase:
+
+1. Firebase Authentication:
+   - Đăng ký.
+   - Đăng nhập.
+   - Đăng xuất.
+   - Quản lý tài khoản.
+
+2. Cloud Firestore:
+   - Lưu người dùng.
+   - Lưu chủ đề.
+   - Lưu câu hỏi.
+   - Lưu lịch sử làm bài.
+   - Lưu câu trả lời.
+   - Lưu dữ liệu tiến độ học tập.
+
+3. Firebase Storage:
+   - Lưu các tệp Excel được tải lên.
+   - Lưu tài liệu liên quan nếu cần.
+
+4. Firebase Cloud Functions:
+   - Xử lý nhập dữ liệu.
+   - Tạo đề thi.
+   - Chấm điểm.
+   - Tính toán mức độ thành thạo.
+   - Xử lý các thao tác quản trị cần bảo mật.
+
+### Triển khai
+
+Có thể sử dụng:
+
+- GitHub để quản lý mã nguồn.
+- Vercel để triển khai frontend.
+- Firebase để quản lý dữ liệu và backend.
+
+Không được giả định rằng Firebase đã được kết nối sẵn.
+
+Nếu chưa có Firebase Configuration, hãy tạo cấu trúc tích hợp rõ ràng và hướng dẫn tôi cấu hình từng bước.
+
+Không sử dụng dữ liệu giả để thay thế dữ liệu thật trong các chức năng cốt lõi khi đã triển khai Firebase.
+
+Không lưu mật khẩu dưới dạng văn bản thuần.
+
+Không đặt API Key hoặc thông tin bí mật trong mã nguồn frontend.
+
+---
+
+# 4. PHÂN QUYỀN TÀI KHOẢN
+
+Website có hai loại tài khoản:
+
+## 4.1. ADMIN – Quản trị viên
+
+Admin có toàn quyền quản lý nội dung và người dùng.
+
+Các quyền chính:
+
+- Quản lý ngân hàng câu hỏi.
+- Quản lý 10 chủ đề cố định.
+- Tải lên câu hỏi bằng Excel.
+- Xem trước câu hỏi trước khi nhập.
+- Chỉnh sửa câu hỏi.
+- Xóa câu hỏi.
+- Thêm câu hỏi mới.
+- Tìm kiếm và lọc câu hỏi.
+- Xem số lượng câu hỏi từng chủ đề.
+- Quản lý tài khoản người dùng.
+- Xem thống kê hoạt động của website.
+- Xem lịch sử nhập dữ liệu.
+
+## 4.2. USER – Người dùng
+
+Người dùng có thể:
+
+- Đăng ký tài khoản.
+- Đăng nhập.
+- Xem danh sách chủ đề.
+- Ôn tập theo từng chủ đề.
+- Luyện đề ngẫu nhiên.
+- Ôn tập câu hỏi đã trả lời sai.
+- Xem kết quả các lần làm bài.
+- Theo dõi tiến độ học tập.
+- Xem mức độ thành thạo từng chủ đề.
+- Xem gợi ý nội dung cần ôn tập.
+
+Người dùng không được:
+
+- Thêm câu hỏi.
+- Chỉnh sửa câu hỏi.
+- Xóa câu hỏi.
+- Xem đáp án đúng trong chế độ thi khi chưa nộp bài.
+- Truy cập trang quản trị.
+
+## 4.3. Bảo mật phân quyền
+
+Bắt buộc triển khai phân quyền ở phía máy chủ và Firebase Security Rules.
+
+Không được chỉ ẩn nút Admin trên giao diện rồi coi đó là bảo mật.
+
+Không cho phép người dùng tự thay đổi quyền tài khoản của mình thành Admin thông qua trình duyệt hoặc Firestore client.
+
+Quyền Admin phải được cấp bằng cơ chế an toàn, ví dụ Firebase Custom Claims hoặc quy trình quản trị phía máy chủ.
+
+---
+
+# 5. DANH MỤC 10 CHỦ ĐỀ CỐ ĐỊNH
+
+Đây là danh sách chủ đề mặc định của website.
+
+Không cho phép Admin tự tạo thêm chủ đề mới trong phiên bản đầu tiên.
+
+Admin chỉ được chọn một trong 10 chủ đề này để tải lên và quản lý câu hỏi.
+
+Mỗi chủ đề có:
+
+- Mã chủ đề.
+- Tên chủ đề.
+- Tên văn bản pháp luật.
+- Số hiệu văn bản.
+- Mô tả.
+- Số lượng câu hỏi.
+- Trạng thái hoạt động.
+
+Danh sách:
+
+### Chủ đề 01: Luật Viên chức
+
+Văn bản: Luật Viên chức số 129/2025/QH15.
+
+### Chủ đề 02: Luật Giáo dục
+
+Văn bản:
+- Luật Giáo dục số 43/2019/QH14.
+- Luật số 123/2025/QH15 sửa đổi, bổ sung.
+
+### Chủ đề 03: Luật Nhà giáo
+
+Văn bản: Luật Nhà giáo số 73/2025/QH15.
+
+### Chủ đề 04: Hướng dẫn thi hành Luật Nhà giáo
+
+Văn bản: Nghị định số 93/2026/NĐ-CP.
+
+### Chủ đề 05: Đánh giá, xếp loại viên chức
+
+Văn bản: Nghị định số 233/2026/NĐ-CP.
+
+### Chủ đề 06: Kỷ luật viên chức
+
+Văn bản: Nghị định số 234/2026/NĐ-CP.
+
+### Chủ đề 07: Tuyển dụng và quản lý viên chức
+
+Văn bản: Nghị định số 259/2026/NĐ-CP.
+
+### Chủ đề 08: Điều lệ trường THCS, THPT
+
+Văn bản: Thông tư số 15/2026/TT-BGDĐT.
+
+### Chủ đề 09: Tổ chức Trung tâm GDNN – GDTX
+
+Văn bản: Thông tư số 01/2023/TT-BGDĐT.
+
+### Chủ đề 10: Quy tắc ứng xử của nhà giáo
+
+Văn bản: Thông tư số 03/2026/TT-BGDĐT.
+
+Lưu ý:
+
+Đây là danh mục và thông tin văn bản do chủ website cung cấp. Không tự ý sửa đổi số hiệu văn bản.
+
+Không tự tạo nội dung pháp luật hoặc suy đoán điều khoản.
+
+Nội dung câu hỏi, đáp án và giải thích phải được Admin cung cấp và kiểm duyệt.
+
+---
+
+# 6. GIAO DIỆN NGƯỜI DÙNG – USER
+
+Sau khi đăng nhập, người dùng được chuyển đến trang chủ cá nhân.
+
+Thanh điều hướng gồm:
+
+1. Trang chủ.
+2. Ôn tập theo chủ đề.
+3. Luyện đề ngẫu nhiên.
+4. Ôn tập câu sai.
+5. Tiến độ học tập.
+6. Lịch sử làm bài.
+
+Góc trên bên phải:
+
+- Tên người dùng.
+- Ảnh đại diện hoặc chữ cái đại diện.
+- Thông tin tài khoản.
+- Đổi mật khẩu.
+- Đăng xuất.
+
+## 6.1. Trang chủ
+
+Thiết kế Dashboard cá nhân.
+
+Hiển thị:
+
+### Khu vực chào mừng
+
+Ví dụ:
+
+"Xin chào, Nguyễn Văn A!"
+
+"Chào mừng bạn đến với OnVienChucBacNinh. Hãy tiếp tục hành trình chinh phục kỳ thi viên chức."
+
+### Các thẻ thống kê
+
+Hiển thị:
+
+- Tổng số câu đã làm.
+- Tổng số đề đã hoàn thành.
+- Tỷ lệ trả lời đúng.
+- Số câu hỏi đang cần ôn tập.
+- Số chủ đề đã học.
+- Mức độ thành thạo trung bình.
+
+### Khu vực tiến độ chủ đề
+
+Hiển thị 10 chủ đề dưới dạng thẻ hoặc thanh tiến độ.
+
+Mỗi thẻ gồm:
+
+- Tên chủ đề.
+- Số câu đã luyện.
+- Tỷ lệ đúng.
+- Mức độ thành thạo.
+- Nút "Ôn tập ngay".
+
+### Khu vực tiếp tục học
+
+Hiển thị chủ đề gần nhất người dùng đã học.
+
+### Khu vực gợi ý
+
+Ví dụ:
+
+- Bạn cần ôn tập thêm chủ đề Luật Giáo dục.
+- Bạn thường trả lời sai nhóm câu hỏi về tuyển dụng viên chức.
+- Hãy thử luyện thêm 20 câu ở chủ đề Luật Viên chức.
+
+Các gợi ý phải dựa trên dữ liệu thực tế của người dùng.
+
+---
+
+# 7. CHỨC NĂNG ÔN TẬP THEO CHỦ ĐỀ
+
+Đây là chức năng quan trọng nhất của website.
+
+Khi người dùng chọn "Ôn tập theo chủ đề", hiển thị danh sách 10 chủ đề cố định.
+
+Mỗi chủ đề có:
+
+- Tên chủ đề.
+- Tên văn bản pháp luật.
+- Số lượng câu hỏi.
+- Mức độ thành thạo hiện tại của người dùng.
+- Nút bắt đầu ôn tập.
+
+Khi người dùng chọn một chủ đề, chuyển đến màn hình thiết lập bài luyện tập.
+
+### Người dùng được chọn:
+
+**Số lượng câu hỏi:**
+
+- 10 câu.
+- 20 câu.
+- 30 câu.
+- 50 câu.
+- Tất cả câu hỏi.
+
+Chỉ cho phép chọn số lượng không vượt quá số câu hiện có.
+
+**Mức độ câu hỏi:**
+
+- Dễ.
+- Trung bình.
+- Khó.
+- Hỗn hợp.
+
+**Chế độ làm bài:**
+
+1. Chế độ luyện tập.
+2. Chế độ thi thử.
+
+### Chế độ luyện tập
+
+- Hiển thị từng câu hỏi.
+- Người dùng chọn một đáp án A/B/C/D.
+- Sau khi xác nhận đáp án, hiển thị đúng hoặc sai.
+- Hiển thị đáp án đúng.
+- Hiển thị giải thích nếu có.
+- Cho phép chuyển sang câu tiếp theo.
+- Ghi nhận kết quả vào lịch sử.
+
+### Chế độ thi thử
+
+- Hiển thị câu hỏi và 4 đáp án.
+- Có đồng hồ đếm ngược nếu người dùng chọn thời gian.
+- Không hiển thị đáp án đúng khi đang làm bài.
+- Không hiển thị giải thích trước khi nộp.
+- Có thể đánh dấu câu hỏi để xem lại.
+- Cho phép chuyển qua lại giữa các câu.
+- Có bảng số thứ tự câu hỏi.
+- Hiển thị số câu đã trả lời và chưa trả lời.
+- Người dùng chủ động nộp bài hoặc hệ thống tự động nộp khi hết giờ.
+
+Sau khi nộp bài, hiển thị:
+
+- Tổng số câu.
+- Số câu đúng.
+- Số câu sai.
+- Số câu chưa trả lời.
+- Điểm số.
+- Tỷ lệ đúng.
+- Thời gian làm bài.
+- Danh sách câu trả lời.
+- Đáp án đúng.
+- Giải thích nếu có.
+
+Điểm số tính theo công thức:
+
+Điểm = Số câu đúng / Tổng số câu × 10.
+
+Lưu ý: Chỉ hiển thị đáp án đúng sau khi nộp bài ở chế độ thi thử.
+
+---
+
+# 8. CHỨC NĂNG LUYỆN ĐỀ NGẪU NHIÊN
+
+Đây là chức năng cho phép người dùng tạo một đề thi từ ngân hàng câu hỏi.
+
+Giao diện gồm:
+
+### Phạm vi câu hỏi
+
+- Tất cả 10 chủ đề.
+- Chọn một số chủ đề cụ thể.
+
+### Số lượng câu hỏi
+
+- 20 câu.
+- 30 câu.
+- 40 câu.
+- 50 câu.
+- 100 câu.
+
+Chỉ cho phép chọn số câu không vượt quá số câu đủ điều kiện trong ngân hàng.
+
+### Mức độ
+
+- Dễ.
+- Trung bình.
+- Khó.
+- Hỗn hợp.
+
+### Thời gian
+
+- Không giới hạn.
+- 15 phút.
+- 30 phút.
+- 45 phút.
+- 60 phút.
+
+### Cơ chế tạo đề
+
+- Chọn câu hỏi ngẫu nhiên từ các chủ đề đã chọn.
+- Không trùng câu hỏi trong cùng một đề.
+- Cân bằng tương đối giữa các chủ đề nếu chọn nhiều chủ đề.
+- Phân bổ độ khó nếu chọn hỗn hợp.
+- Không chọn câu hỏi không có đủ 4 đáp án hoặc thiếu đáp án đúng.
+- Ưu tiên các câu hỏi chưa làm hoặc ít gặp trong các lần luyện gần đây nếu có đủ dữ liệu.
+- Không tạo đề vượt quá số lượng câu hỏi thực tế.
+
+Người dùng có thể chọn:
+
+- Bắt đầu luyện đề.
+- Làm lại đề khác.
+- Xem kết quả.
+- Xem phân tích theo từng chủ đề.
+
+Mỗi đề thi phải có mã lượt làm bài riêng để lưu lịch sử.
+
+---
+
+# 9. CHỨC NĂNG ÔN TẬP CÂU SAI
+
+Đây là chức năng rất quan trọng.
+
+Hệ thống phải tự động ghi nhận câu hỏi mà người dùng trả lời sai.
+
+Mỗi người dùng có một danh sách câu hỏi sai riêng.
+
+Thông tin cần lưu:
+
+- Mã câu hỏi.
+- Nội dung câu hỏi.
+- Chủ đề.
+- Đáp án người dùng đã chọn.
+- Đáp án đúng.
+- Số lần trả lời sai.
+- Lần sai gần nhất.
+- Trạng thái đã khắc phục hay chưa.
+
+Giao diện gồm:
+
+### Bộ lọc
+
+- Tất cả chủ đề.
+- Từng chủ đề.
+- Tất cả câu sai.
+- Câu sai chưa khắc phục.
+- Câu đã khắc phục.
+
+### Các thao tác
+
+- Ôn tập câu hỏi.
+- Xem đáp án đúng.
+- Xem giải thích.
+- Luyện lại câu hỏi.
+- Lọc câu hỏi theo chủ đề.
+
+### Cơ chế ghi nhận
+
+Khi người dùng trả lời sai, hệ thống thêm hoặc cập nhật câu hỏi trong danh sách câu sai.
+
+Nếu người dùng trả lời đúng trong những lần luyện sau, cập nhật số lần trả lời đúng liên tiếp và trạng thái khắc phục.
+
+Không xóa lịch sử các lần trả lời sai trước đó.
+
+Một câu hỏi chỉ được xem là đã khắc phục khi người dùng trả lời đúng liên tiếp ít nhất 2 lần trong các lượt luyện độc lập.
+
+---
+
+# 10. CHỨC NĂNG TIẾN ĐỘ HỌC TẬP VÀ ĐÁNH GIÁ MỨC ĐỘ THÀNH THẠO
+
+Đây là tính năng tạo ra sự khác biệt cho OnVienChucBacNinh.
+
+Website không chỉ đánh giá người dùng bằng điểm số của một đề thi.
+
+Hệ thống phải phân tích quá trình học tập qua nhiều lần làm bài.
+
+## 10.1. Dashboard tiến độ
+
+Hiển thị bảng gồm:
+
+| Chủ đề | Số câu đã luyện | Tỷ lệ đúng | Mức độ thành thạo |
+|---|---:|---:|---|
+| Luật Viên chức | ... | ... | ... |
+| Luật Giáo dục | ... | ... | ... |
+| Luật Nhà giáo | ... | ... | ... |
+| Hướng dẫn thi hành Luật Nhà giáo | ... | ... | ... |
+| Đánh giá, xếp loại viên chức | ... | ... | ... |
+| Kỷ luật viên chức | ... | ... | ... |
+| Tuyển dụng và quản lý viên chức | ... | ... | ... |
+| Điều lệ trường THCS, THPT | ... | ... | ... |
+| Tổ chức Trung tâm GDNN – GDTX | ... | ... | ... |
+| Quy tắc ứng xử của nhà giáo | ... | ... | ... |
+
+Mỗi chủ đề có thanh tiến độ riêng.
+
+## 10.2. Công thức đánh giá mức độ thành thạo
+
+Hãy xây dựng một thuật toán minh bạch, có thể giải thích được.
+
+Đề xuất trọng số ban đầu:
+
+- Độ chính xác khi trả lời: 50%.
+- Tính ổn định qua nhiều lần làm bài: 25%.
+- Khả năng khắc phục câu đã trả lời sai: 15%.
+- Khả năng trả lời câu hỏi ở các mức độ khác nhau: 10%.
+
+Tổng trọng số = 100%.
+
+Có thể biểu diễn:
+
+Mastery Score = Accuracy × 0.50
++ Consistency × 0.25
++ Recovery × 0.15
++ Difficulty Coverage × 0.10.
+
+Các thành phần phải được chuẩn hóa về thang điểm 0–100.
+
+Yêu cầu:
+
+- Tính toán riêng cho từng chủ đề.
+- Không lấy điểm một đề thi duy nhất làm mức độ thành thạo.
+- Không để người dùng tăng mức độ thành thạo quá dễ bằng cách lặp đi lặp lại một câu hỏi.
+- Phải xét số lượng câu hỏi khác nhau đã làm.
+- Phải xét khả năng trả lời đúng qua nhiều lượt độc lập.
+- Có thể ưu tiên kết quả gần đây hơn kết quả quá cũ.
+- Cần có cơ chế chống việc một số câu hỏi được lặp lại quá nhiều làm sai lệch kết quả.
+
+## 10.3. Điều kiện dữ liệu tối thiểu
+
+Không đánh giá mức độ thành thạo khi người dùng chưa có đủ dữ liệu.
+
+Đề xuất:
+
+- Dưới 10 câu hỏi khác nhau đã trả lời: Chưa đủ dữ liệu.
+- Từ 10 câu trở lên: Có thể đưa ra đánh giá sơ bộ.
+- Từ 20 câu trở lên và có nhiều lượt luyện độc lập: Đánh giá đáng tin cậy hơn.
+
+Hiển thị ghi chú:
+
+"Mức độ thành thạo được ước tính dựa trên kết quả luyện tập của bạn, không phải kết quả đánh giá chính thức của kỳ thi."
+
+## 10.4. Các cấp độ thành thạo
+
+| Điểm thành thạo | Trạng thái |
+|---|---|
+| 0–39 | Chưa thành thạo |
+| 40–59 | Đang học |
+| 60–79 | Khá |
+| 80–94 | Thành thạo |
+| 95–100 | Rất thành thạo |
+
+Nếu chưa đủ dữ liệu, hiển thị "Chưa đủ dữ liệu" thay vì tự gán 0%.
+
+## 10.5. Phân tích tiến độ
+
+Hiển thị:
+
+- Biểu đồ tiến bộ theo thời gian.
+- Tỷ lệ đúng theo từng chủ đề.
+- Số câu đã luyện theo từng chủ đề.
+- Số câu sai.
+- Số câu đã khắc phục.
+- Mức độ thành thạo hiện tại.
+
+Đưa ra nhận xét tự động dựa trên dữ liệu:
+
+Ví dụ:
+
+"Bạn đang có kết quả tốt ở chủ đề Luật Viên chức với mức độ thành thạo 85%."
+
+"Chủ đề Luật Giáo dục đang là nội dung cần ưu tiên ôn tập."
+
+"Bạn đã khắc phục được 12/18 câu hỏi từng trả lời sai."
+
+---
+
+# 11. CHỨC NĂNG LỊCH SỬ LÀM BÀI
+
+Lưu lại tất cả các lượt làm bài của người dùng.
+
+Thông tin cần lưu:
+
+- Ngày và giờ làm bài.
+- Tên bài thi.
+- Chủ đề.
+- Loại bài: Theo chủ đề hoặc Ngẫu nhiên.
+- Số câu hỏi.
+- Số câu đúng.
+- Số câu sai.
+- Điểm số.
+- Thời gian làm bài.
+- Danh sách câu trả lời.
+
+Người dùng có thể:
+
+- Xem lịch sử.
+- Lọc theo thời gian.
+- Lọc theo chủ đề.
+- Xem chi tiết từng lượt làm bài.
+- Xem lại đáp án.
+- Làm lại một chủ đề.
+
+Lịch sử phải được lưu trên Firestore và không bị mất khi người dùng đăng xuất hoặc đăng nhập lại.
+
+---
+
+# 12. GIAO DIỆN ADMIN – TRANG QUẢN TRỊ
+
+Admin có một Dashboard riêng.
+
+Sidebar gồm:
+
+1. Tổng quan.
+2. Quản lý chủ đề.
+3. Ngân hàng câu hỏi.
+4. Nhập câu hỏi Excel.
+5. Quản lý người dùng.
+6. Thống kê hoạt động.
+7. Lịch sử nhập dữ liệu.
+8. Cài đặt.
+
+## 12.1. Dashboard Admin
+
+Hiển thị:
+
+- Tổng số chủ đề.
+- Tổng số câu hỏi.
+- Tổng số tài khoản.
+- Tổng số lượt làm bài.
+- Số người dùng hoạt động.
+- Số câu hỏi theo từng chủ đề.
+
+Có biểu đồ:
+
+- Số câu hỏi từng chủ đề.
+- Lượt làm bài theo thời gian.
+- Chủ đề được luyện tập nhiều nhất.
+
+## 12.2. Quản lý chủ đề
+
+Hiển thị cố định 10 chủ đề.
+
+Mỗi chủ đề có:
+
+- Tên chủ đề.
+- Số hiệu văn bản pháp luật.
+- Số lượng câu hỏi.
+- Ngày cập nhật gần nhất.
+- Nút xem câu hỏi.
+- Nút nhập câu hỏi.
+
+Không có nút thêm chủ đề mới.
+
+Không cho phép xóa chủ đề mặc định.
+
+## 12.3. Quản lý ngân hàng câu hỏi
+
+Admin có thể:
+
+- Xem danh sách câu hỏi.
+- Tìm kiếm nội dung.
+- Lọc theo chủ đề.
+- Lọc theo độ khó.
+- Xem đáp án đúng.
+- Xem giải thích.
+- Chỉnh sửa câu hỏi.
+- Xóa câu hỏi.
+- Thêm câu hỏi thủ công.
+
+Mỗi câu hỏi phải có mã định danh duy nhất.
+
+Khi xóa câu hỏi, không xóa lịch sử làm bài đã phát sinh. Các dữ liệu lịch sử phải giữ được thông tin cần thiết để xem lại kết quả cũ.
+
+---
+
+# 13. CHỨC NĂNG NHẬP CÂU HỎI BẰNG EXCEL
+
+Đây là chức năng quan trọng nhất đối với Admin.
+
+Admin sẽ sử dụng tài khoản quản trị để tải lên ngân hàng câu hỏi theo từng chủ đề.
+
+Định dạng ưu tiên: Excel .xlsx.
+
+Không yêu cầu Admin tạo chủ đề mới trong file Excel.
+
+Admin phải chọn chủ đề trước khi tải file lên.
+
+## 13.1. Mẫu Excel chuẩn
+
+Tạo mẫu Excel có các cột:
+
+| STT | Nội dung câu hỏi | Đáp án A | Đáp án B | Đáp án C | Đáp án D | Đáp án đúng | Mức độ | Giải thích |
+|---|---|---|---|---|---|---|---|---|
+
+Quy định:
+
+- Mỗi dòng là một câu hỏi.
+- Mỗi câu có đúng 4 phương án A/B/C/D.
+- Đáp án đúng chỉ được nhập A, B, C hoặc D.
+- Mức độ chỉ gồm Dễ, Trung bình, Khó.
+- Giải thích có thể để trống.
+- Nội dung câu hỏi không được để trống.
+- Các đáp án không được để trống.
+- Không chấp nhận đáp án đúng nằm ngoài A/B/C/D.
+
+Có thể hỗ trợ thêm cột "Căn cứ pháp lý" để Admin ghi điều, khoản, điểm hoặc văn bản liên quan đến câu hỏi.
+
+Cột này không bắt buộc.
+
+## 13.2. Tạo nút tải mẫu Excel
+
+Trong giao diện Admin phải có nút:
+
+"Tải file mẫu Excel".
+
+Khi nhấn, hệ thống tải xuống tệp mẫu Excel có cấu trúc chuẩn.
+
+File mẫu nên có:
+
+- Sheet 1: Danh sách câu hỏi mẫu.
+- Sheet 2: Hướng dẫn nhập dữ liệu.
+- Sheet 3: Danh mục mức độ và đáp án hợp lệ.
+
+Có ví dụ minh họa để Admin dễ sử dụng.
+
+## 13.3. Quy trình nhập câu hỏi
+
+Bước 1: Chọn chủ đề.
+
+Bước 2: Tải lên file Excel.
+
+Bước 3: Hệ thống đọc dữ liệu.
+
+Bước 4: Kiểm tra định dạng và tính hợp lệ.
+
+Bước 5: Hiển thị bảng xem trước.
+
+Bước 6: Admin kiểm tra và chỉnh sửa nếu cần.
+
+Bước 7: Admin xác nhận nhập dữ liệu.
+
+Bước 8: Hệ thống lưu vào Firestore.
+
+Không tự động lưu dữ liệu ngay sau khi tải file.
+
+## 13.4. Kiểm tra lỗi
+
+Hệ thống phải phát hiện:
+
+- Thiếu nội dung câu hỏi.
+- Thiếu đáp án.
+- Đáp án đúng không hợp lệ.
+- Thiếu mức độ hoặc mức độ không hợp lệ.
+- Dòng dữ liệu trống.
+- Sai định dạng Excel.
+- Câu hỏi trùng lặp.
+- File không có đúng cấu trúc.
+
+Nếu phát hiện lỗi:
+
+Hiển thị rõ số dòng và nội dung lỗi.
+
+Ví dụ:
+
+"Dòng 12: Thiếu đáp án C."
+
+"Dòng 18: Đáp án đúng không hợp lệ. Chỉ chấp nhận A/B/C/D."
+
+"Dòng 25: Câu hỏi có khả năng trùng với câu hỏi đã tồn tại."
+
+Không âm thầm bỏ qua những dòng lỗi.
+
+Cho phép Admin chỉnh sửa dữ liệu hoặc tải lại file.
+
+## 13.5. Phát hiện câu hỏi trùng lặp
+
+Kiểm tra trùng lặp trong cùng chủ đề dựa trên nội dung câu hỏi đã chuẩn hóa.
+
+Nếu phát hiện câu hỏi giống hoặc gần giống câu đã tồn tại:
+
+- Hiển thị cảnh báo.
+- Cho phép Admin xem câu hỏi cũ.
+- Cho phép Admin quyết định nhập hoặc bỏ qua.
+
+Không tự động xóa dữ liệu mà chưa có xác nhận.
+
+## 13.6. Hai phương thức nhập dữ liệu
+
+Admin có thể chọn:
+
+1. Thêm câu hỏi vào ngân hàng hiện có.
+2. Thay thế toàn bộ ngân hàng câu hỏi của chủ đề.
+
+Đối với chức năng thay thế:
+
+- Phải có hộp thoại xác nhận.
+- Thông báo số câu hỏi sẽ bị thay thế.
+- Không xóa lịch sử làm bài của người dùng.
+- Không xóa dữ liệu tiến độ và câu sai.
+- Không thực hiện nếu dữ liệu mới chưa vượt qua bước kiểm tra.
+
+Nếu có câu hỏi đã được sử dụng trong lịch sử, cần lưu snapshot nội dung và đáp án của câu hỏi tại thời điểm làm bài để bảo đảm kết quả cũ không bị thay đổi.
+
+---
+
+# 14. CẤU TRÚC DỮ LIỆU FIRESTORE
+
+Hãy thiết kế cấu trúc dữ liệu rõ ràng, tối ưu và có thể mở rộng.
+
+Đề xuất các collection:
+
+## users
+
+- uid.
+- displayName.
+- email.
+- role.
+- createdAt.
+- lastLoginAt.
+- status.
+
+## topics
+
+- topicId.
+- name.
+- legalDocument.
+- description.
+- questionCount.
+- createdAt.
+- updatedAt.
+
+10 chủ đề được khởi tạo sẵn.
+
+## questions
+
+- questionId.
+- topicId.
+- questionText.
+- optionA.
+- optionB.
+- optionC.
+- optionD.
+- correctAnswer.
+- difficulty.
+- explanation.
+- legalReference.
+- createdAt.
+- updatedAt.
+- status.
+
+## attempts
+
+- attemptId.
+- userId.
+- attemptType.
+- topicIds.
+- totalQuestions.
+- correctCount.
+- incorrectCount.
+- unansweredCount.
+- score.
+- duration.
+- startedAt.
+- submittedAt.
+- status.
+
+## attemptAnswers
+
+- answerId.
+- attemptId.
+- userId.
+- questionId.
+- topicId.
+- selectedAnswer.
+- correctAnswerSnapshot.
+- questionSnapshot.
+- isCorrect.
+- answeredAt.
+
+## userWrongQuestions
+
+- userId.
+- questionId.
+- topicId.
+- wrongCount.
+- correctStreak.
+- lastWrongAt.
+- lastCorrectAt.
+- status.
+
+## userTopicProgress
+
+- userId.
+- topicId.
+- totalAttempts.
+- uniqueQuestionsAnswered.
+- totalCorrect.
+- totalIncorrect.
+- accuracy.
+- consistency.
+- recovery.
+- difficultyCoverage.
+- masteryScore.
+- masteryLevel.
+- updatedAt.
+
+## importHistory
+
+- importId.
+- adminId.
+- topicId.
+- fileName.
+- totalRows.
+- successfulRows.
+- failedRows.
+- importMode.
+- importedAt.
+- status.
+
+Có thể điều chỉnh cấu trúc nếu có phương án tốt hơn, nhưng phải bảo đảm:
+
+- Dữ liệu tách biệt theo từng người dùng.
+- Không để người dùng xem dữ liệu cá nhân của người khác.
+- Không để lộ đáp án đúng trong quá trình thi.
+- Lưu được lịch sử dài hạn.
+- Có khả năng truy vấn hiệu quả.
+
+---
+
+# 15. BẢO MẬT VÀ TÍNH TOÀN VẸN DỮ LIỆU
+
+Đây là yêu cầu bắt buộc.
+
+1. Người dùng chỉ được truy cập dữ liệu cá nhân của mình.
+2. Người dùng không được sửa quyền Admin.
+3. Người dùng không được sửa trực tiếp điểm số hoặc kết quả đã chấm.
+4. Đáp án đúng không được gửi xuống client trong chế độ thi thử trước khi nộp bài.
+5. Việc chấm điểm và cập nhật kết quả phải được thực hiện ở backend đáng tin cậy.
+6. Không để người dùng truy cập trái phép các trang Admin.
+7. Không lưu mật khẩu trong Firestore.
+8. Có kiểm tra dữ liệu đầu vào.
+9. Có xử lý lỗi và thông báo rõ ràng.
+10. Có cơ chế tránh ghi nhận trùng kết quả khi người dùng nhấn nộp bài nhiều lần.
+
+Nếu sử dụng Firestore, hãy xây dựng Security Rules tương ứng với từng collection.
+
+Không sử dụng quyền truy cập công khai toàn bộ database.
+
+---
+
+# 16. TRẢI NGHIỆM NGƯỜI DÙNG
+
+Website phải dễ sử dụng đối với giáo viên và người đi làm.
+
+Yêu cầu:
+
+- Các nút bấm rõ ràng.
+- Không có quá nhiều bước thao tác.
+- Có thông báo thành công/thất bại.
+- Có trạng thái Loading.
+- Có Empty State khi chưa có dữ liệu.
+- Có hộp thoại xác nhận khi xóa hoặc thay thế dữ liệu.
+- Có phân trang cho danh sách câu hỏi.
+- Có tìm kiếm.
+- Có bộ lọc.
+- Có khả năng lưu tiến độ.
+- Khi mất kết nối, thông báo phù hợp.
+- Không để giao diện bị vỡ khi hiển thị trên điện thoại.
+
+Không sử dụng các biểu đồ hoặc số liệu giả trong Dashboard thực tế.
+
+Khi chưa có dữ liệu, hiển thị 0 hoặc "Chưa có dữ liệu".
+
+---
+
+# 17. CÁC TRANG CẦN XÂY DỰNG
+
+## Nhóm trang công khai
+
+1. Trang giới thiệu.
+2. Đăng nhập.
+3. Đăng ký.
+4. Quên mật khẩu.
+
+## Nhóm trang User
+
+1. Dashboard.
+2. Danh sách 10 chủ đề.
+3. Chi tiết chủ đề.
+4. Cấu hình bài luyện tập.
+5. Màn hình làm bài.
+6. Kết quả bài thi.
+7. Luyện đề ngẫu nhiên.
+8. Danh sách câu sai.
+9. Tiến độ học tập.
+10. Lịch sử làm bài.
+11. Hồ sơ cá nhân.
+
+## Nhóm trang Admin
+
+1. Dashboard Admin.
+2. Danh sách chủ đề.
+3. Ngân hàng câu hỏi.
+4. Thêm câu hỏi.
+5. Chỉnh sửa câu hỏi.
+6. Nhập Excel.
+7. Xem trước dữ liệu Excel.
+8. Quản lý người dùng.
+9. Thống kê hoạt động.
+10. Lịch sử nhập dữ liệu.
+11. Cài đặt hệ thống.
+
+---
+
+# 18. YÊU CẦU KIỂM THỬ
+
+Sau khi xây dựng, hãy tự kiểm thử các luồng sau:
+
+### Luồng 1: Đăng nhập
+
+- Người dùng đăng nhập thành công.
+- Người dùng không thể truy cập Admin.
+- Admin truy cập được Dashboard Admin.
+- Người dùng đăng xuất và đăng nhập lại được.
+
+### Luồng 2: Nhập câu hỏi
+
+- Admin chọn đúng chủ đề.
+- Tải file Excel hợp lệ.
+- Hệ thống đọc đúng dữ liệu.
+- Hệ thống phát hiện dòng lỗi.
+- Admin xem trước.
+- Admin xác nhận.
+- Câu hỏi được lưu vào đúng chủ đề.
+- Số lượng câu hỏi được cập nhật.
+
+### Luồng 3: Luyện tập
+
+- Người dùng chọn một chủ đề.
+- Chọn 10 câu.
+- Làm bài.
+- Nhận phản hồi đúng/sai.
+- Xem giải thích.
+- Hoàn thành bài.
+- Lưu lịch sử.
+
+### Luồng 4: Luyện đề ngẫu nhiên
+
+- Chọn nhiều chủ đề.
+- Chọn số câu.
+- Hệ thống tạo đề không trùng câu.
+- Người dùng làm bài.
+- Hệ thống chấm điểm chính xác.
+
+### Luồng 5: Ôn câu sai
+
+- Trả lời sai một câu.
+- Câu hỏi xuất hiện trong danh sách câu sai.
+- Người dùng luyện lại.
+- Trả lời đúng.
+- Hệ thống cập nhật trạng thái khắc phục.
+
+### Luồng 6: Tiến độ
+
+- Người dùng làm nhiều lượt.
+- Hệ thống ghi nhận số câu khác nhau đã làm.
+- Tính tỷ lệ đúng.
+- Cập nhật mức độ thành thạo.
+- Hiển thị biểu đồ.
+- Không làm mất dữ liệu sau khi đăng xuất.
+
+### Luồng 7: Bảo mật
+
+- User không truy cập được dữ liệu Admin.
+- User không đọc được đáp án đúng trong chế độ thi.
+- User không chỉnh sửa được điểm số.
+- User không truy cập được dữ liệu của người dùng khác.
+
+---
+
+# 19. NGUYÊN TẮC PHÁT TRIỂN
+
+Đặc biệt quan trọng:
+
+1. Không chỉ tạo giao diện đẹp mà phải xây dựng các chức năng thực sự hoạt động.
+2. Không sử dụng dữ liệu mẫu để giả lập chức năng đã hoàn thành.
+3. Không tự ý thay đổi danh sách 10 chủ đề.
+4. Không tự tạo nội dung câu hỏi pháp luật.
+5. Không bỏ qua chức năng nhập Excel.
+6. Không bỏ qua việc lưu lịch sử và tiến độ.
+7. Không bỏ qua bảo mật đáp án đúng.
+8. Không tính mức độ thành thạo chỉ dựa vào điểm số một bài thi.
+9. Không tạo tài khoản Admin bằng cách cho phép người dùng tự chọn vai trò khi đăng ký.
+10. Phải có khả năng mở rộng thêm chức năng trong tương lai.
+
+Nếu chưa thể triển khai một chức năng do thiếu Firebase Configuration hoặc thiếu quyền truy cập, hãy:
+
+- Tạo cấu trúc mã nguồn cần thiết.
+- Chỉ rõ phần nào chưa hoạt động.
+- Hướng dẫn cấu hình.
+- Không tuyên bố chức năng đã hoàn thành khi chưa kiểm thử.
+
+---
+
+# 20. CÁCH THỨC TRIỂN KHAI TRONG GOOGLE AI STUDIO
+
+Không cố gắng tạo toàn bộ hệ thống bằng một giao diện sơ sài.
+
+Hãy làm việc theo từng giai đoạn nhưng phải giữ kiến trúc thống nhất.
+
+### Giai đoạn 1: Khởi tạo ứng dụng
+
+- Xây dựng cấu trúc dự án.
+- Thiết kế hệ thống màu sắc.
+- Thiết kế logo.
+- Xây dựng Header, Sidebar, Footer.
+- Tạo các trang chính.
+- Tạo giao diện User và Admin.
+- Thiết kế responsive.
+
+### Giai đoạn 2: Firebase
+
+- Kết nối Firebase.
+- Cấu hình Authentication.
+- Tạo Firestore collections.
+- Cấu hình Storage.
+- Xây dựng Security Rules.
+- Thiết lập tài khoản Admin an toàn.
+- Khởi tạo 10 chủ đề cố định.
+
+### Giai đoạn 3: Ngân hàng câu hỏi
+
+- Xây dựng CRUD câu hỏi.
+- Tạo mẫu Excel.
+- Xây dựng chức năng nhập Excel.
+- Kiểm tra lỗi.
+- Xem trước dữ liệu.
+- Xác nhận nhập dữ liệu.
+- Lưu câu hỏi.
+
+### Giai đoạn 4: Chức năng User
+
+- Ôn tập theo chủ đề.
+- Luyện đề ngẫu nhiên.
+- Chế độ luyện tập.
+- Chế độ thi thử.
+- Chấm điểm.
+- Lưu lịch sử.
+
+### Giai đoạn 5: Phân tích học tập
+
+- Ghi nhận câu sai.
+- Ôn tập câu sai.
+- Tính tiến độ.
+- Tính mức độ thành thạo.
+- Biểu đồ thống kê.
+- Gợi ý học tập.
+
+### Giai đoạn 6: Kiểm thử và triển khai
+
+- Kiểm thử các luồng chức năng.
+- Kiểm thử phân quyền.
+- Kiểm thử dữ liệu.
+- Tối ưu giao diện.
+- Chuẩn bị triển khai GitHub và Vercel.
+- Hướng dẫn cấu hình tên miền.
+
+---
+
+# 21. YÊU CẦU ĐẦU RA ĐẦU TIÊN
+
+Trước tiên, hãy phân tích toàn bộ yêu cầu và đề xuất kiến trúc tổng thể của OnVienChucBacNinh.
+
+Sau đó, bắt đầu xây dựng ứng dụng thực tế.
+
+Ưu tiên hoàn thiện trước:
+
+1. Giao diện trang chủ User.
+2. Giao diện trang chủ Admin.
+3. Danh sách 10 chủ đề cố định.
+4. Đăng nhập và phân quyền.
+5. Ngân hàng câu hỏi và nhập Excel.
+
+Tiếp theo mới triển khai các chức năng luyện tập, chấm điểm, câu sai và phân tích mức độ thành thạo.
+
+Sau mỗi giai đoạn:
+
+- Kiểm tra mã nguồn.
+- Sửa lỗi.
+- Đảm bảo các chức năng đã làm không bị hỏng khi thêm chức năng mới.
+- Báo cáo những gì đã hoàn thành.
+- Nêu rõ những gì cần tôi cấu hình hoặc cung cấp.
+
+**YÊU CẦU CUỐI CÙNG:**
+
+Hãy xây dựng OnVienChucBacNinh thành một nền tảng ôn thi viên chức chuyên nghiệp, dễ sử dụng, có dữ liệu thực, có hệ thống quản trị hoàn chỉnh và có khả năng đánh giá quá trình học tập của từng người dùng.
+
+Không dừng lại ở việc tạo bản thiết kế hoặc giao diện minh họa. Hãy ưu tiên một sản phẩm có thể vận hành thực tế và có thể tiếp tục phát triển lâu dài.
