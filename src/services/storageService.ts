@@ -243,8 +243,8 @@ class StorageService {
       throw new Error('Tài khoản này hiện đang bị tạm khóa. Vui lòng liên hệ Quản trị viên!');
     }
 
-    // Password check: if user has a password, compare it
-    if (found.password && found.password !== pass) {
+    // Strict password verification: user must have a password and it must match
+    if (!found.password || found.password !== pass) {
       throw new Error('Mật khẩu không chính xác! Vui lòng kiểm tra lại hoặc yêu cầu Admin cấp lại mật khẩu.');
     }
 
