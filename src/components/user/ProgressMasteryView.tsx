@@ -25,6 +25,8 @@ export const ProgressMasteryView: React.FC<ProgressMasteryViewProps> = ({
   onSelectTopicForPractice
 }) => {
   const { currentUser } = useAuth();
+  if (!currentUser) return null;
+
   const topics = storageService.getTopics();
   const allProgress = storageService.getAllUserTopicProgress(currentUser.uid);
   const wrongQuestions = storageService.getUserWrongQuestions(currentUser.uid);

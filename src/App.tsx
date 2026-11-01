@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Header, UserTab, AdminTab } from './components/common/Header';
 import { Footer } from './components/common/Footer';
@@ -14,7 +14,7 @@ import { WrongQuestionsView } from './components/user/WrongQuestionsView';
 import { ProgressMasteryView } from './components/user/ProgressMasteryView';
 import { AttemptHistoryView } from './components/user/AttemptHistoryView';
 import { UserProfileView } from './components/user/UserProfileView';
-import { LoginModal } from './components/auth/LoginModal';
+import { LoginView } from './components/auth/LoginView';
 
 // Admin Views
 import { AdminDashboard } from './components/admin/AdminDashboard';
@@ -26,7 +26,7 @@ import { AdminHistoryList } from './components/admin/AdminHistoryList';
 import { AdminSettings } from './components/admin/AdminSettings';
 
 import { storageService } from './services/storageService';
-import { Topic, Question, Attempt, Difficulty, AttemptType } from './types';
+import { Topic, Question, Attempt, Difficulty, AttemptType, User } from './types';
 import { generateExamQuestions } from './utils/examGenerator';
 
 interface ActiveSessionConfig {
@@ -50,11 +50,38 @@ const MainApp: React.FC = () => {
 
   // Setup modal for a specific topic
   const [setupTopic, setSetupTopic] = useState<Topic | null>(null);
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
 
   // Filter pass-through for Admin Question Bank
   const [adminQuestionBankTopic, setAdminQuestionBankTopic] = useState<string>('all');
   const [adminImportTopic, setAdminImportTopic] = useState<string>('topic-01');
+
+  // Synchronize active tab whenever current user or role changes
+  useEffect(() => {
+    if (currentUser) {
+      if (currentUser.role === 'admin' && !currentTab.startsWith('admin_')) {
+        setCurrentTab('admin_dashboard');
+      } else if (currentUser.role !== 'admin' && currentTab.startsWith('admin_')) {
+        setCurrentTab('dashboard');
+      }
+    }
+  }, [currentUser]);
+
+  // Handle successful login
+  const handleLoginSuccess = (user: User) => {
+    setActiveSession(null);
+    setCompletedAttempt(null);
+    if (user.role === 'admin') {
+      setCurrentTab('admin_dashboard');
+    } else {
+      setCurrentTab('dashboard');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // If user is not logged in, display the dedicated login menu / view
+  if (!currentUser) {
+    return <LoginView onLoginSuccess={handleLoginSuccess} />;
+  }
 
   // Handle Tab Switch
   const handleSelectTab = (tab: UserTab | AdminTab) => {
@@ -184,7 +211,6 @@ const MainApp: React.FC = () => {
         currentTab={currentTab}
         onSelectTab={handleSelectTab}
         onOpenExamSetup={() => handleSelectTab('random_exam')}
-        onOpenLoginModal={() => setShowLoginModal(true)}
       />
 
       {/* Main Content Viewport */}
@@ -318,16 +344,6 @@ const MainApp: React.FC = () => {
         onClose={() => setSetupTopic(null)}
         topic={setupTopic}
         onStart={handleStartTopicPractice}
-      />
-
-      <LoginModal
-        isOpen={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-        onSuccess={() => {
-          setActiveSession(null);
-          setCompletedAttempt(null);
-          handleSelectTab('dashboard');
-        }}
       />
 
       {/* Universal Footer */}

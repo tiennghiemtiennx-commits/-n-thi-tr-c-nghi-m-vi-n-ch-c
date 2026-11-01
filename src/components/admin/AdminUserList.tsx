@@ -141,8 +141,8 @@ export const AdminUserList: React.FC = () => {
 
   const handleLoginAs = (user: User) => {
     loginAsUser(user);
-    alert(`Đã chuyển đổi phiên làm việc sang tài khoản: ${user.displayName} (${user.role === 'admin' ? 'Quản trị viên' : 'Thí sinh'})`);
-    window.location.reload();
+    setSuccessMessage(`Đã chuyển đổi sang tài khoản: ${user.displayName} (${user.role === 'admin' ? 'Quản trị viên' : 'Thí sinh'})`);
+    setTimeout(() => setSuccessMessage(''), 3000);
   };
 
   const filteredUsers = users.filter(u => {
@@ -228,7 +228,7 @@ export const AdminUserList: React.FC = () => {
               {filteredUsers.map(user => {
                 const userAttemptsCount = attempts.filter(a => a.userId === user.uid).length;
                 const isPasswordShown = showPasswords[user.uid];
-                const isCurrent = currentUser.uid === user.uid;
+                const isCurrent = currentUser?.uid === user.uid;
 
                 return (
                   <tr key={user.uid} className="hover:bg-slate-50/80 transition-colors">

@@ -46,16 +46,14 @@ interface HeaderProps {
   currentTab: string;
   onSelectTab: (tab: any) => void;
   onOpenExamSetup?: () => void;
-  onOpenLoginModal?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   currentTab,
   onSelectTab,
-  onOpenExamSetup,
-  onOpenLoginModal
+  onOpenExamSetup
 }) => {
-  const { currentUser, isAdmin, switchRole, logout } = useAuth();
+  const { currentUser, isAdmin, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
@@ -81,46 +79,10 @@ export const Header: React.FC<HeaderProps> = ({
 
   const activeNavList = isAdmin ? adminNavItems : userNavItems;
 
+  if (!currentUser) return null;
+
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-slate-200/80 shadow-xs">
-      {/* Top Banner with Provincial System Notice & Quick Role Switcher */}
-      <div className="bg-[#123B70] text-white px-4 py-1.5 text-xs font-medium flex items-center justify-between">
-        <div className="flex items-center gap-2 truncate">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span className="truncate">
-            Hệ thống ôn thi tuyển dụng viên chức ngành Giáo dục & Đào tạo tỉnh Bắc Ninh
-          </span>
-        </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center bg-white/10 rounded-full px-2 py-0.5 text-[11px] gap-1.5 border border-white/20">
-            <span className="text-blue-200">Chế độ xem:</span>
-            <button
-              onClick={() => {
-                switchRole('user');
-                onSelectTab('dashboard');
-              }}
-              className={`px-2 py-0.5 rounded-full font-semibold transition-all ${
-                !isAdmin ? 'bg-white text-[#123B70] shadow-xs' : 'text-white hover:text-blue-200'
-              }`}
-            >
-              Học viên
-            </button>
-            <button
-              onClick={() => {
-                switchRole('admin');
-                onSelectTab('admin_dashboard');
-              }}
-              className={`px-2 py-0.5 rounded-full font-semibold transition-all flex items-center gap-1 ${
-                isAdmin ? 'bg-amber-400 text-slate-900 shadow-xs' : 'text-white hover:text-amber-200'
-              }`}
-            >
-              <Shield className="w-3 h-3" />
-              Quản trị (Admin)
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Main Header Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -212,18 +174,16 @@ export const Header: React.FC<HeaderProps> = ({
                     <span>Hồ sơ cá nhân</span>
                   </button>
 
-                  {onOpenLoginModal && (
-                    <button
-                      onClick={() => {
-                        setUserDropdownOpen(false);
-                        onOpenLoginModal();
-                      }}
-                      className="w-full text-left px-4 py-2 text-xs text-[#2563EB] hover:bg-blue-50 flex items-center gap-2 font-semibold"
-                    >
-                      <Key className="w-4 h-4 text-blue-600" />
-                      <span>Đăng nhập Email & Mật khẩu</span>
-                    </button>
-                  )}
+                  <button
+                    onClick={() => {
+                      setUserDropdownOpen(false);
+                      logout();
+                    }}
+                    className="w-full text-left px-4 py-2 text-xs text-[#2563EB] hover:bg-blue-50 flex items-center gap-2 font-medium"
+                  >
+                    <Key className="w-4 h-4 text-blue-600" />
+                    <span>Đổi tài khoản khác</span>
+                  </button>
 
                   <div className="border-t border-slate-100 my-1"></div>
 
@@ -231,9 +191,8 @@ export const Header: React.FC<HeaderProps> = ({
                     onClick={() => {
                       setUserDropdownOpen(false);
                       logout();
-                      onSelectTab('dashboard');
                     }}
-                    className="w-full text-left px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 flex items-center gap-2"
+                    className="w-full text-left px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 flex items-center gap-2 font-medium"
                   >
                     <LogOut className="w-4 h-4" />
                     <span>Đăng xuất</span>
@@ -262,6 +221,13 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="py-2 border-b border-slate-100 mb-2">
             <div className="text-xs font-bold text-slate-800">{currentUser.displayName}</div>
             <div className="text-[11px] text-slate-500">{currentUser.email}</div>
+            <div className="mt-1">
+              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                isAdmin ? 'bg-amber-100 text-amber-900' : 'bg-blue-100 text-blue-800'
+              }`}>
+                {isAdmin ? 'Quản trị viên' : 'Thí sinh'}
+              </span>
+            </div>
           </div>
           {activeNavList.map(item => (
             <button
@@ -283,13 +249,13 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="pt-4 border-t border-slate-100 flex gap-2">
             <button
               onClick={() => {
-                switchRole(isAdmin ? 'user' : 'admin');
-                onSelectTab(isAdmin ? 'dashboard' : 'admin_dashboard');
+                logout();
                 setMobileMenuOpen(false);
               }}
-              className="flex-1 py-2 text-xs font-bold text-center border border-slate-300 rounded-lg"
+              className="w-full py-2.5 text-xs font-bold text-center text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg flex items-center justify-center gap-1.5"
             >
-              Chuyển sang {isAdmin ? 'Thí sinh' : 'Admin'}
+              <LogOut className="w-4 h-4" />
+              <span>Đăng xuất hệ thống</span>
             </button>
           </div>
         </div>

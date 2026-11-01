@@ -88,11 +88,8 @@ class StorageService {
       } catch {}
     }
 
-    // Default current user
-    const currentUser = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
-    if (!currentUser) {
-      localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(INITIAL_USERS[0]));
-    }
+    // Default current user - do not auto-populate so fresh visits show login
+    // const currentUser = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
 
     this.initialized = true;
   }
@@ -107,17 +104,25 @@ class StorageService {
     }
   }
 
-  public getCurrentUser(): User {
+  public getCurrentUser(): User | null {
     try {
       const data = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
-      return data ? JSON.parse(data) : INITIAL_USERS[0];
+      return data ? JSON.parse(data) : null;
     } catch {
-      return INITIAL_USERS[0];
+      return null;
     }
   }
 
-  public setCurrentUser(user: User) {
-    localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user));
+  public setCurrentUser(user: User | null) {
+    if (user) {
+      localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user));
+    } else {
+      localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+    }
+  }
+
+  public clearCurrentUser() {
+    localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
   }
 
   public registerUser(name: string, email: string, password: string = 'password123'): User {
@@ -198,7 +203,7 @@ class StorageService {
 
     // If updating current user, refresh current user too
     const current = this.getCurrentUser();
-    if (current.uid === uid) {
+    if (current && current.uid === uid) {
       this.setCurrentUser(users[idx]);
     }
 
@@ -218,10 +223,10 @@ class StorageService {
     const filtered = users.filter(u => u.uid !== uid);
     localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(filtered));
 
-    // If deleted user was active user, reset to student 01
+    // If deleted user was active user, reset to null
     const current = this.getCurrentUser();
-    if (current.uid === uid) {
-      this.setCurrentUser(INITIAL_USERS[0]);
+    if (current && current.uid === uid) {
+      this.clearCurrentUser();
     }
 
     return true;
@@ -712,12 +717,13 @@ class StorageService {
   }
 
   public exportBackup(): string {
+    const current = this.getCurrentUser();
     const backup = {
       version: '1.0',
       exportedAt: new Date().toISOString(),
       questions: this.getQuestions(),
       attempts: this.getAttempts(),
-      wrongQuestions: this.getUserWrongQuestions(this.getCurrentUser().uid),
+      wrongQuestions: current ? this.getUserWrongQuestions(current.uid) : [],
       importHistory: this.getImportHistory()
     };
     return JSON.stringify(backup, null, 2);

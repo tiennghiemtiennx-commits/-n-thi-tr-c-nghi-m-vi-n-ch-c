@@ -25,6 +25,8 @@ interface RandomExamSetupProps {
 
 export const RandomExamSetup: React.FC<RandomExamSetupProps> = ({ onStartExam }) => {
   const { currentUser } = useAuth();
+  if (!currentUser) return null;
+
   const topics = storageService.getTopics();
   const allQuestions = storageService.getQuestions();
 

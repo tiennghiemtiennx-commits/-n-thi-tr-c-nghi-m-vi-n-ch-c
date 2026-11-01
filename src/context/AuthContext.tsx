@@ -3,9 +3,10 @@ import { User, Role } from '../types';
 import { storageService, INITIAL_USERS } from '../services/storageService';
 
 interface AuthContextType {
-  currentUser: User;
+  currentUser: User | null;
+  isAuthenticated: boolean;
   isAdmin: boolean;
-  login: (email: string, pass: string) => Promise<{ success: boolean; error?: string }>;
+  login: (email: string, pass: string) => Promise<{ success: boolean; user?: User; error?: string }>;
   loginAsUser: (user: User) => void;
   register: (name: string, email: string, pass: string) => Promise<boolean>;
   logout: () => void;
@@ -16,18 +17,18 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<User>(() => storageService.getCurrentUser());
+  const [currentUser, setCurrentUser] = useState<User | null>(() => storageService.getCurrentUser());
 
   useEffect(() => {
     storageService.init();
     setCurrentUser(storageService.getCurrentUser());
   }, []);
 
-  const login = async (email: string, pass: string): Promise<{ success: boolean; error?: string }> => {
+  const login = async (email: string, pass: string): Promise<{ success: boolean; user?: User; error?: string }> => {
     try {
       const verified = storageService.verifyUserCredentials(email, pass);
       setCurrentUser(verified);
-      return { success: true };
+      return { success: true, user: verified };
     } catch (err: any) {
       return { success: false, error: err.message || 'Đăng nhập không thành công.' };
     }
@@ -45,10 +46,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = () => {
-    // Reset to student user or guest state
-    const student = INITIAL_USERS[0];
-    storageService.setCurrentUser(student);
-    setCurrentUser(student);
+    storageService.clearCurrentUser();
+    setCurrentUser(null);
   };
 
   const switchRole = (role: Role) => {
@@ -57,6 +56,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const updateProfile = (displayName: string, phone?: string) => {
+    if (!currentUser) return;
     const updated = { ...currentUser, displayName, phone };
     storageService.setCurrentUser(updated);
     setCurrentUser(updated);
@@ -66,7 +66,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <AuthContext.Provider
       value={{
         currentUser,
-        isAdmin: currentUser.role === 'admin',
+        isAuthenticated: Boolean(currentUser),
+        isAdmin: currentUser?.role === 'admin',
         login,
         loginAsUser,
         register,

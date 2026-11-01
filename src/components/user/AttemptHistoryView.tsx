@@ -25,6 +25,8 @@ export const AttemptHistoryView: React.FC<AttemptHistoryViewProps> = ({
   onRetryAttempt
 }) => {
   const { currentUser } = useAuth();
+  if (!currentUser) return null;
+
   const topics = storageService.getTopics();
   const attempts = storageService.getAttempts(currentUser.uid);
 

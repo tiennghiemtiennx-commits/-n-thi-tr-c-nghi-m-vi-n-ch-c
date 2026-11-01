@@ -28,6 +28,8 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
   onStartExam
 }) => {
   const { currentUser } = useAuth();
+  if (!currentUser) return null;
+
   const topics = storageService.getTopics();
   const attempts = storageService.getAttempts(currentUser.uid);
   const allProgress = storageService.getAllUserTopicProgress(currentUser.uid);

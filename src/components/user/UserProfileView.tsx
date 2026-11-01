@@ -4,7 +4,9 @@ import { storageService } from '../../services/storageService';
 import { User, Shield, Mail, Phone, Calendar, Key, Check } from 'lucide-react';
 
 export const UserProfileView: React.FC = () => {
-  const { currentUser, updateProfile, switchRole } = useAuth();
+  const { currentUser, updateProfile } = useAuth();
+  if (!currentUser) return null;
+
   const [displayName, setDisplayName] = useState(currentUser.displayName);
   const [phone, setPhone] = useState(currentUser.phone || '');
   const [savedSuccess, setSavedSuccess] = useState(false);

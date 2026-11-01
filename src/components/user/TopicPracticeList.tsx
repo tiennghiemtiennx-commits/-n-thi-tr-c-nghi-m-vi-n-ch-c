@@ -18,6 +18,8 @@ interface TopicPracticeListProps {
 
 export const TopicPracticeList: React.FC<TopicPracticeListProps> = ({ onSelectTopic }) => {
   const { currentUser } = useAuth();
+  if (!currentUser) return null;
+
   const topics = storageService.getTopics();
   const [searchTerm, setSearchTerm] = useState('');
 

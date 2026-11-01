@@ -24,6 +24,8 @@ export const WrongQuestionsView: React.FC<WrongQuestionsViewProps> = ({
   onStartPracticeOnQuestions
 }) => {
   const { currentUser } = useAuth();
+  if (!currentUser) return null;
+
   const topics = storageService.getTopics();
   const allQuestions = storageService.getQuestions();
 

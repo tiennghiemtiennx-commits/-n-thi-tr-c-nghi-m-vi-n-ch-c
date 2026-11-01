@@ -40,6 +40,8 @@ export const PracticeSession: React.FC<PracticeSessionProps> = ({
   onExit
 }) => {
   const { currentUser } = useAuth();
+  if (!currentUser) return null;
+
   const totalQuestions = questions.length;
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);

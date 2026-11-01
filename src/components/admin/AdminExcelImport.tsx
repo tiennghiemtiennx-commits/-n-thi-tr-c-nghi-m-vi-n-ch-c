@@ -124,8 +124,8 @@ export const AdminExcelImport: React.FC<AdminExcelImportProps> = ({
       validQuestionsToImport,
       importMode,
       selectedFile.name,
-      currentUser.uid,
-      currentUser.displayName
+      currentUser?.uid || 'usr-admin-01',
+      currentUser?.displayName || 'Ban Quản Trị'
     );
 
     setShowReplaceConfirmModal(false);
